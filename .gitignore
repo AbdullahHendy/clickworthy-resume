@@ -1,0 +1,12 @@
+# General
+.vscode
+.idea
+desktop.ini
+.DS_Store
+
+# Rust
+/target
+**/*.rs.bk
+
+# PDF blobs
+*.pdf
