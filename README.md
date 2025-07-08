@@ -6,13 +6,35 @@
 </div>
 
 ## Example Resume
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./examples/resume-sample.png">
-  <img alt="Example Resume" src="./examples/resume-sample.png">
-</picture>
+<a href="./examples/resume-sample.png" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./examples/resume-sample.png">
+    <img alt="Example Resume" src="./examples/resume-sample.png">
+  </picture>
+</a>
 
 ## Example CV
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./examples/resume-sample.png">
-  <img src="./examples/cv-sample-p1.png" alt="CV Page 1"><img src="./examples/cv-sample-p2.png" alt="CV Page 2">
-</picture>
+
+<div align="center">
+<table>
+  <tr>
+    <td>
+      <a href="./examples/cv-sample-p1.png" target="_blank">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./examples/cv-sample-p1.png">
+          <img alt="Example CV-1" src="./examples/cv-sample-p1.png">
+        </picture>
+      </a>
+    </td>
+    <td>
+      <a href="./examples/cv-sample-p2.png" target="_blank">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./examples/cv-sample-p2.png">
+          <img alt="Example CV-2" src="./examples/cv-sample-p2.png">
+        </picture>
+      </a>
+    </td>
+  </tr>
+</table>
+
+</div>
