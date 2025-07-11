@@ -199,7 +199,7 @@ The `skills` function displays categorized lists of skills or technologies. Each
 ---
 
 ### Multi-page Support
-For CVs with more than one page, use `#pagebreak()` where apropriate for page-splitting.
+For CVs with more than one page, use `#pagebreak()` where apropriate for page-splitting if the value for `bottom` in the `margin` field in [#show: resume.with()](#resume-headers-and-configs) is too small to make a clean split between items.
 
 #### Example
 ```typ
