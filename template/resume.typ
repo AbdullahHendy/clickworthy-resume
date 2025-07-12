@@ -138,6 +138,8 @@
 )
 
 // Publications
+// This template uses the `pub` function twice to display two publication entries.
+// The `pub-list` function is more advanced and could be used instead to display a list of publications from a `.bib` or `.yml` file.
 = Publications
 #pub(
   authors: (

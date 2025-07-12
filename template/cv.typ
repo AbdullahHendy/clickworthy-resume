@@ -39,6 +39,7 @@
   margin: margin,
 )
 
+// Skills
 = Skills
 #skills((
   ("Expertise", (
@@ -74,6 +75,7 @@
   )),
 ))
 
+// Experiences
 = Experience
 #exp(
   title: "Distinguished Engineer",
@@ -112,12 +114,17 @@
   ]
 )
 
+// Publications
+// This template uses the `pub-list` function to display a list of publications.
+// It requires a `.bib` or `.yml` file with publication entries.
+// The `pub` function is a simplified version that could be used instead to produce multiple publication entries by calling it multiple times.
 = Publications
 #pub-list(
   bib: bibliography("assets/publications.bib"),
   style: "ieee"
 )
 
+// Education
 = Education
 #edu(
   institution: "University of California, Berkeley",
