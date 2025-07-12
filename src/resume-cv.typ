@@ -89,9 +89,6 @@ https://github.com/typst/packages/blob/2da94b0f21174ae8366834332a6e44fd966de4dd/
   body
 }
 
-// Global counter for IEEE-style publications
-#let cit-cntr = counter("cit-cntr")
-
 /*
 Education section formatting, allowing enumeration of degrees and GPA. 
 `hide` flag to allow for hiding individual Education entries.
@@ -203,7 +200,6 @@ Publication section formatting logic.
   venue: "",
   year: "",
   doi-link: "",
-  style: "cv",
   extra: "",
   hide: false,
 ) = {
@@ -223,37 +219,16 @@ Publication section formatting logic.
   // Link the doi or link to the publication title for the cv style
   let fmt-link = if doi-link != "" {
     link("https://" + doi-link)[#quote(title)]
+  } else {
+    quote(title)
   }
 
   // Citation formatting logic
-  let citation = if style == "cv" {
-    [
-      #{
-        fmt-authors.join(", ") + ", " + fmt-link + ", " + emph(venue) + ", " + year + "." + if extra != "" { " " + strong[#extra] }
-      }
-    ]
-  } else if style == "apa" {
-    [
-      #{
-        fmt-authors.join(", ") + " (" + year + "). " + emph(title) + ". " + emph(venue) + if doi-link != "" { ". " + link("https://" + doi-link)[#doi-link] } else { "." } + if extra != "" { ". " + strong[#extra] }
-      }
-    ]
-  } else if style == "ieee" {
-    [
-      #{
-        context cit-cntr.step()
-        "[" + context cit-cntr.display() + "] " + fmt-authors.join(" and ") + ", “" + title + ",” " + emph(venue) + ", " + year + "." + if extra != "" { " " + strong[#extra] }
-      }
-    ]
-  } else if style == "mla" {
-    [
-      #{
-        fmt-authors.join(", ") + ". “" + title + ".” " + emph(venue) + ", " + year + "." + if extra != "" { " " + strong[#extra] }
-      }
-    ]
-  } else {
-    emph("Unsupported citation style.")
-  }
+  let citation = [
+    #{
+      fmt-authors.join(", ") + ", " + fmt-link + ", " + emph(venue) + ", " + year + "." + if extra != "" { " " + strong[#extra] }
+    }
+  ]
 
   pad(
     bottom: -0.3em,
@@ -261,4 +236,20 @@ Publication section formatting logic.
       #citation
     ]
   )
+}
+
+/*
+Publication list section formatting logic based on a BibLaTeX .bib or a Hayagriva .yml file.
+for style options, see: https://typst.app/docs/reference/model/bibliography/
+*/
+#let pub-list(
+  bib: "", 
+  style: "ieee", 
+  ) = {
+  let publicationStyle(str) = {
+    text(str)
+  }
+  show bibliography: it => publicationStyle(it)
+  set bibliography(title: none, style: style, full: true)
+  bib
 }
