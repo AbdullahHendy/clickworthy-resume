@@ -6,7 +6,7 @@
 </div>
 
 ## 🙋‍♂️ Introduction
-This **Typst** Resume template allows for writing resumes and CVs fast. The core is borrowed from the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template with extra features, more flexiblity, and formatting improvements.
+This **Typst** Resume template allows for writing resumes and CVs fast. The core is borrowed from the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template with extra features, more flexibility, and formatting improvements.
 
 For advice on writing an effective resume, this [small write-up](https://github.com/typst/packages/blob/main/packages/preview/guided-resume-starter-cgc/2.0.0/template/starter.typ) by the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template author is quite helpful.
 
@@ -215,7 +215,7 @@ The `skills` function displays categorized lists of skills or technologies. Each
 ---
 
 ### Multi-page Support
-For CVs with more than one page, use `#pagebreak()` where apropriate for page-splitting if the value for `bottom` of the `margin` field in [#show: resume.with()](#resume-headers-and-configs) is too small to make a clean split between items.
+For CVs with more than one page, use `#pagebreak()` where appropriate for page-splitting if the value for `bottom` of the `margin` field in [#show: resume.with()](#resume-headers-and-configs) is too small to make a clean split between items.
 
 #### Example
 ```typ
