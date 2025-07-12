@@ -150,7 +150,6 @@
   venue: "ACM UbiComp",
   year: "2024",
   doi-link: "doi.org/10.48550/arXiv.2404.00987",
-  style: "cv",
 )
 
 #pub(
@@ -164,7 +163,6 @@
   year: "2023",
   doi-link: "doi.org/10.1109/EDGECOMP.2023.1234567",
   extra: "Best Paper Award",
-  style: "cv",
 )
 
 // Skills
