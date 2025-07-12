@@ -13,10 +13,9 @@ categories = ["cv"]
 exclude = [
 	".github",
 	"tests",
-    "examples",
 ]
 
 [template]
 path = "template"
-entrypoint = "main.typ"
+entrypoint = "resume.typ"
 thumbnail = "thumbnail.png"

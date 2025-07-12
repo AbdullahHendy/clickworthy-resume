@@ -127,9 +127,9 @@ The `exp` function formats a professional experience entry, showing the role tit
 
 ---
 
-### Publication
-The `pub` function formats a publication citation using various academic styles (e.g. APA, IEEE, MLA, CV). It supports highlighting a specific author, linking the title via DOI, and adding extra notes. Use the `hide` flag to skip rendering.
-> **NOTE**: *CV* format is the default and appears to be the most widely used format. Other citation styles **might not** reflect all guidlines for that style in different scenarios. The styling in all styles are geared towards **Conference Papers**
+### Publication Entry
+The `pub` function formats a publication citation entry using a simple yet common style. It supports highlighting a specific author, linking the title via DOI, and adding extra notes. Use the `hide` flag to skip rendering.
+> **NOTE**: the style used for publication references appears to be the most widely used format. For more standarized/advanced citation styles see [the Publication List section]() 
 
 #### Parameters
 - `authors`: A list of author names
@@ -138,7 +138,6 @@ The `pub` function formats a publication citation using various academic styles 
 - `venue`: Conference, journal, or publisher name
 - `year`: Year of publication
 - `doi-link`: DOI string without the https:// prefix (e.g. `"doi.org/..."`)
-- `style`: Citation style (`"cv"`, `"apa"`, `"ieee"`, `"mla"`) (default: `"cv"`)
 - `extra`: Any additional note or status (e.g. "Best Paper Award")
 - `hide`: Boolean flag to skip rendering this entry (default: `false`)
 
@@ -156,8 +155,25 @@ The `pub` function formats a publication citation using various academic styles 
   year: "2023",
   doi-link: "doi.org/10.18653/v1/2023.acl-long.123",
   extra: "Best Paper Award",
-  style: "cv",
   hide: false,
+)
+```
+
+---
+
+### Publication List
+The `pub-list` function displays a styled list of publications using a `.bib` or `.yml` file.
+It uses Typst’s native bibliography rendering engine and supports multiple citation `styles` such as IEEE, APA, and MLA. See the [](https://typst.app/docs/reference/model/bibliography/) for more info about `.bib` or `.yml` bibliography definition files or different available `styles`.
+
+#### Parameters
+- `bib`: A reference to `bibliography` function with a path to a `.bib` or `.yml` files (e.g., `bibliography("publications.bib")`)
+- `style` (optional): Citation formatting style. Accepts styles like `"ieee"`, `"apa"`, `"mla"`, and more (default: `ieee`)
+
+#### Example
+```typ
+#pub-list(
+  bib: bibliography("assets/publications.bib"),
+  style: "ieee"
 )
 ```
 
@@ -199,7 +215,7 @@ The `skills` function displays categorized lists of skills or technologies. Each
 ---
 
 ### Multi-page Support
-For CVs with more than one page, use `#pagebreak()` where apropriate for page-splitting if the value for `bottom` in the `margin` field in [#show: resume.with()](#resume-headers-and-configs) is too small to make a clean split between items.
+For CVs with more than one page, use `#pagebreak()` where apropriate for page-splitting if the value for `bottom` of the `margin` field in [#show: resume.with()](#resume-headers-and-configs) is too small to make a clean split between items.
 
 #### Example
 ```typ
@@ -216,7 +232,6 @@ For CVs with more than one page, use `#pagebreak()` where apropriate for page-sp
   year: "2025",
   doi-link: "doi.org/10.1145/9999999.9999999",
   extra: "To appear",
-  style: "cv",
 )
 
 // Page break for readability
@@ -234,15 +249,14 @@ For CVs with more than one page, use `#pagebreak()` where apropriate for page-sp
   venue: "NeurIPS",
   year: "2024",
   doi-link: "doi.org/10.48550/arXiv.2406.00123",
-  style: "cv",
 )
 ```
 
 ## 📝 Example Resume
-  <a href="./examples/resume-sample.png" target="_blank">
+  <a href="./tests/resume/ref/1.png" target="_blank">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./examples/resume-sample.png">
-      <img alt="Example Resume" src="./examples/resume-sample.png">
+      <source media="(prefers-color-scheme: dark)" srcset="./tests/resume/ref/1.png">
+      <img alt="Example Resume" src="./tests/resume/ref/1.png">
     </picture>
   </a>
 
@@ -252,18 +266,18 @@ For CVs with more than one page, use `#pagebreak()` where apropriate for page-sp
 <table>
   <tr>
     <td>
-      <a href="./examples/cv-sample-p1.png" target="_blank">
+      <a href="./tests/cv/ref/1.png" target="_blank">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="./examples/cv-sample-p1.png">
-          <img alt="Example CV-1" src="./examples/cv-sample-p1.png">
+          <source media="(prefers-color-scheme: dark)" srcset="./tests/cv/ref/1.png">
+          <img alt="Example CV-1" src="./tests/cv/ref/1.png">
         </picture>
       </a>
     </td>
     <td>
-      <a href="./examples/cv-sample-p2.png" target="_blank">
+      <a href="./tests/cv/ref/2.png" target="_blank">
         <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="./examples/cv-sample-p2.png">
-          <img alt="Example CV-2" src="./examples/cv-sample-p2.png">
+          <source media="(prefers-color-scheme: dark)" srcset="./tests/cv/ref/2.png">
+          <img alt="Example CV-2" src="./tests/cv/ref/2.png">
         </picture>
       </a>
     </td>
