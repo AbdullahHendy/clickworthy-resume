@@ -1,6 +1,5 @@
 /*
-Core formatting for the template document type. Establishes general document-wide formatting,
-and creates the header and footer for the resume.
+Core formatting for the template document type. Establishes general document-wide formatting, and creates the header for the resume.
 
 Inspired by the template from the `guided-resume-starter-cgc` v2.0.0 package:
 https://github.com/typst/packages/blob/2da94b0f21174ae8366834332a6e44fd966de4dd/packages/preview/guided-resume-starter-cgc/2.0.0/template/templates/resume.template.typ
