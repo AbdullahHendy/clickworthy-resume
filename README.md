@@ -2,7 +2,7 @@
 
 # clickworthy-resume
 
-**A simple, flexible, responsive, ATS-friendly, and click-worthy resume. Extra cover letter and extendable to a CV**
+**A simple, flexible, responsive, ATS-friendly, and click-worthy resume. Extra cover letter and extendable to a CV.**
 </div>
 
 ## 🙋‍♂️ Introduction
