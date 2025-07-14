@@ -4,3 +4,4 @@
 */
 
 #import "resume-cv.typ": *
+#import "cover-letter.typ": *

@@ -4,11 +4,11 @@
 name = "clickworthy-resume"
 version = "0.1.0"
 entrypoint = "src/lib.typ"
-authors = ["Abdullah Hendy"]
+authors = ["Abdullah Hendy <https://github.com/AbdullahHendy>"]
 license = "MIT"
 description = "A simple, flexible, responsive, ATS-friendly, and click-worthy resume."
 repository = "https://github.com/AbdullahHendy/clickworthy-resume"
-keywords = ["cv", "resume"]
+keywords = ["cv", "curriculum vitae", "resume", "cover letter"]
 categories = ["cv"]
 exclude = [
 	".github",

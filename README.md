@@ -2,13 +2,15 @@
 
 # clickworthy-resume
 
-**A simple, flexible, responsive, ATS-friendly, and click-worthy resume.**
+**A simple, flexible, responsive, ATS-friendly, and click-worthy resume. Extra cover letter and extendable to a CV**
 </div>
 
 ## 🙋‍♂️ Introduction
-This **Typst** Resume template allows for writing resumes and CVs fast. The core is borrowed from the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template with extra features, more flexibility, and formatting improvements.
+This **Typst** Resume template allows for writing resumes, CVs, and cover letters fast. The core is borrowed from the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template with extra features, more flexibility, and formatting improvements.
 
 For advice on writing an effective resume, this [small write-up](https://github.com/typst/packages/blob/main/packages/preview/guided-resume-starter-cgc/2.0.0/template/starter.typ) by the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template author is quite helpful.
+
+For advice on writing an effective cover letter, this [guide](https://career.engin.umich.edu/sample-cover-letter/) by [UMich ECRC](https://career.engin.umich.edu/) is quite helpful.
 
 ## 🏃 Getting Started
 ### [**Typst Web App**](https://typst.app/)
@@ -23,16 +25,17 @@ For advice on writing an effective resume, this [small write-up](https://github.
 > **NOTE**: Steps 2 and 3 will not be necessary once the package is on the [**Typst Universe**](https://typst.app/universe/search/?kind=packages)
 
 ## ✏️ How to Edit
-The provided template shows all functions that the package supports with their respective parameters, the following ***documentation*** is provided for completeness.
+The provided templates show all functions that the package supports with their respective parameters, the following ***documentation*** is provided for completeness.
 
 **All function parameters are technically optional for better customization**
 
+### **Resume/CV**
 **Most functions provide a `hide` flag to make a clean `*.typ` file including all information in one place without having to comment-out unwanted entries for a specific resume version**
 
-### Resume headers and Configs
+#### Resume headers and Configs
 The resume is generated using a customizable `resume` function that accepts various parameters for layout, theme, and content. It defines the document’s formatting, header, and professional summary section, followed by the main content body.
 
-#### Parameters
+##### Parameters
 - `author`: Your full name
 - `location`: City, state/province, and country
 - `contacts`: A list of links or contact info
@@ -43,7 +46,7 @@ The resume is generated using a customizable `resume` function that accepts vari
 - `lang`: Document language (default: `"en"`)
 - `margin`: Page margins (default: `(top: 1cm, bottom: 0cm, left: 1cm, right: 1cm)`)
 
-#### Example
+##### Example
 ```typ
 #show: resume.with(
   author: "Dr. Alex Morgan",
@@ -69,10 +72,10 @@ The resume is generated using a customizable `resume` function that accepts vari
 
 ---
 
-### Education
+#### Education
 The `edu` function formats a single educational entry, including institution name, degrees, GPA, and additional notes. You can list multiple degrees per institution, and control visibility with the `hide` flag.
 
-#### Parameters
+##### Parameters
 - `institution`: The name of the school or university
 - `date`: The graduation date or duration
 - `degrees`: A list of degree-level and field tuples, e.g. `("BSc", "Computer Science")`
@@ -81,7 +84,7 @@ The `edu` function formats a single educational entry, including institution nam
 - `extra`: Any extra info (e.g. "Thesis with distinction")
 - `hide`: Boolean flag to skip rendering this entry (default: `false`)
 
-#### Example
+##### Example
 ```typ
 #show: edu(
   institution: "University of California, Berkeley",
@@ -99,10 +102,10 @@ The `edu` function formats a single educational entry, including institution nam
 
 ---
 
-### Experience
+#### Experience
 The `exp` function formats a professional experience entry, showing the role title, organization, date, location, and descriptive bullet points or details. You can control visibility using the `hide` flag.
 
-#### Parameters
+##### Parameters
 - `title`: Job title or role
 - `organization`: Company or institution name
 - `date`: Time period for the role
@@ -110,7 +113,7 @@ The `exp` function formats a professional experience entry, showing the role tit
 - `details`: A block or list of content to describe your work
 - `hide`: Boolean flag to skip rendering this entry (default: `false`)
 
-#### Example
+##### Example
 ```typ
 #exp(
   title: "Embedded Software Engineer",
@@ -127,11 +130,11 @@ The `exp` function formats a professional experience entry, showing the role tit
 
 ---
 
-### Publication Entry
+#### Publication Entry
 The `pub` function formats a publication citation entry using a simple yet common style. It supports highlighting a specific author, linking the title via DOI, and adding extra notes. Use the `hide` flag to skip rendering.
 > **NOTE**: the style used for publication references appears to be the most widely used format. For more standarized/advanced citation styles see [the Publication List section]() 
 
-#### Parameters
+##### Parameters
 - `authors`: A list of author names
 - `bold-author`: One name to emphasize in bold
 - `title`: Title of the publication
@@ -141,7 +144,7 @@ The `pub` function formats a publication citation entry using a simple yet commo
 - `extra`: Any additional note or status (e.g. "Best Paper Award")
 - `hide`: Boolean flag to skip rendering this entry (default: `false`)
 
-#### Example
+##### Example
 ```typ
 #pub(
   authors: (
@@ -161,15 +164,15 @@ The `pub` function formats a publication citation entry using a simple yet commo
 
 ---
 
-### Publication List
+#### Publication List
 The `pub-list` function displays a styled list of publications using a `.bib` or `.yml` file.
 It uses Typst’s native bibliography rendering engine and supports multiple citation `styles` such as IEEE, APA, and MLA. See the [](https://typst.app/docs/reference/model/bibliography/) for more info about `.bib` or `.yml` bibliography definition files or different available `styles`.
 
-#### Parameters
+##### Parameters
 - `bib`: A reference to `bibliography` function with a path to a `.bib` or `.yml` files (e.g., `bibliography("publications.bib")`)
 - `style` (optional): Citation formatting style. Accepts styles like `"ieee"`, `"apa"`, `"mla"`, and more (default: `ieee`)
 
-#### Example
+##### Example
 ```typ
 #pub-list(
   bib: bibliography("assets/publications.bib"),
@@ -179,15 +182,15 @@ It uses Typst’s native bibliography rendering engine and supports multiple cit
 
 ---
 
-### Skills
+#### Skills
 The `skills` function displays categorized lists of skills or technologies. Each entry consists of a label (e.g. "Expertise", "Software") and a list of items shown inline and separated by commas. Each category is rendered on its own line.
 
-#### Parameters
+##### Parameters
 - `areas`: A list of tuples, each containing:
     - a category label (e.g. "Languages", "Tools")
     - a list of individual skills (each as a string or inline element)
 
-#### Example
+##### Example
 ```typ
 #show: skills((
   ("Expertise", (
@@ -214,10 +217,10 @@ The `skills` function displays categorized lists of skills or technologies. Each
 
 ---
 
-### Multi-page Support
+#### Multi-page Support
 For CVs with more than one page, use `#pagebreak()` where appropriate for page-splitting if the value for `bottom` of the `margin` field in [#show: resume.with()](#resume-headers-and-configs) is too small to make a clean split between items.
 
-#### Example
+##### Example
 ```typ
 #pub(
   authors: (
@@ -252,13 +255,64 @@ For CVs with more than one page, use `#pagebreak()` where appropriate for page-s
 )
 ```
 
+### **Cover Letter**
+#### Resume headers and Configs
+The cover letter is generated using a customizable `cover-letter` function that accepts various parameters for layout, and content. It defines the document’s formatting, header, followed by the main content body, then finally it automatically provides a `Sign-Off`.
+
+##### Parameters
+- `author`: Your full name  
+- `location`: City, state/province, and country 
+- `contacts`: List of links or contact info  
+- `date`: Date to display in the header (default: today’s date)
+- `addressee-name`: Recipient’s full name  
+- `addressee-institution`: Organization/Company name  
+- `addressee-address`: Street address  
+- `addressee-city`: City  
+- `addressee-state`: State/Province  
+- `addressee-country`: Country  
+- `addressee-zip`: Postal code  
+- `font`: Font family used (default: `"New Computer Modern"`)  
+- `font-size`: Base font size (default: `11pt`)  
+- `lang`: Document language (default: `"en"`)  
+- `margin`: Page margins (default: `(top: 1cm, bottom: 1cm, left: 1cm, right: 1cm)`)
+
+##### Example
+```typ
+#show: resume.with(
+  author: "Dr. Alex Morgan",
+  location: "San Francisco, CA",
+  contacts: (
+  [#link("mailto:alex.morgan@example.com")[#"alex.morgan@example.com"]],
+  [#link("https://github.com/alexm-dev")[#"github.com/alexm-dev"]],
+  [#link("https://linkedin.com/in/alex-morgan")[#"linkedin.com/in/alex-morgan"]],
+  ),
+  date: datetime.today().display(),
+  addressee-name: "Dr. Jane Smith",
+  addressee-institution: "Embedded Innovations Inc.",
+  addressee-address: "123 Innovation Drive",
+  addressee-city: "Tech City",
+  addressee-state: "CA",
+  addressee-country: "",
+  addressee-zip: "90210",
+  font: "New Computer Modern",
+  font-size: 11pt,
+  lang: "en",
+  margin: (
+    top: 1cm,
+    bottom: 1cm,
+    left: 1cm,
+    right: 1cm,
+  ),
+)
+```
+
 ## 📝 Example Resume
-  <a href="./tests/resume/ref/1.png" target="_blank">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="./tests/resume/ref/1.png">
-      <img alt="Example Resume" src="./tests/resume/ref/1.png">
-    </picture>
-  </a>
+<a href="./tests/resume/ref/1.png" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./tests/resume/ref/1.png">
+    <img alt="Example Resume" src="./tests/resume/ref/1.png">
+  </picture>
+</a>
 
 ## 📓 Example CV
 
@@ -284,6 +338,14 @@ For CVs with more than one page, use `#pagebreak()` where appropriate for page-s
   </tr>
 </table>
 </div>
+
+## Example Cover Letter
+<a href="./tests/cover-letter/ref/1.png" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./tests/cover-letter/ref/1.png">
+    <img alt="Example Cover Letter" src="./tests/cover-letter/ref/1.png">
+  </picture>
+</a>
 
 ## 👨🏻‍💻 Development & Contribution
 **TODO**
