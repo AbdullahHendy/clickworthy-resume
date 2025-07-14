@@ -20,9 +20,50 @@ For advice on writing an effective cover letter, this [guide](https://career.eng
 1. [Install Typst](https://github.com/typst/typst?tab=readme-ov-file#installation)
 2. [Clone this repository](https://github.com/AbdullahHendy/clickworthy-resume)
 3. Run `make install` to install the package locally.
-4. Create a workspace in the location of choice and run `typst init @local/clickworthy-resume:0.1.0` to create a template. 
-5. Edit the template and run `typst compile main.typ` **to generate a pdf resume** or see the [**Typst** guide](https://github.com/typst/typst?tab=readme-ov-file#usage) for more options. 
+4. Create a workspace in the location of choice and run `typst init @local/clickworthy-resume:1.0.0` to create a template. 
+5. Edit the desired template and run `typst compile <template>.typ` **to generate a pdf** version or see the [**Typst** guide](https://github.com/typst/typst?tab=readme-ov-file#usage) for more options. 
 > **NOTE**: Steps 2 and 3 will not be necessary once the package is on the [**Typst Universe**](https://typst.app/universe/search/?kind=packages)
+
+## 📝 Example Resume
+<a href="./tests/resume/ref/1.png" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./tests/resume/ref/1.png">
+    <img alt="Example Resume" src="./tests/resume/ref/1.png">
+  </picture>
+</a>
+
+## 📓 Example CV
+
+<div align="center">
+<table>
+  <tr>
+    <td>
+      <a href="./tests/cv/ref/1.png" target="_blank">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./tests/cv/ref/1.png">
+          <img alt="Example CV-1" src="./tests/cv/ref/1.png">
+        </picture>
+      </a>
+    </td>
+    <td>
+      <a href="./tests/cv/ref/2.png" target="_blank">
+        <picture>
+          <source media="(prefers-color-scheme: dark)" srcset="./tests/cv/ref/2.png">
+          <img alt="Example CV-2" src="./tests/cv/ref/2.png">
+        </picture>
+      </a>
+    </td>
+  </tr>
+</table>
+</div>
+
+## ✉️ Example Cover Letter
+<a href="./tests/cover-letter/ref/1.png" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="./tests/cover-letter/ref/1.png">
+    <img alt="Example Cover Letter" src="./tests/cover-letter/ref/1.png">
+  </picture>
+</a>
 
 ## ✏️ How to Edit
 The provided templates show all functions that the package supports with their respective parameters, the following ***documentation*** is provided for completeness.
@@ -305,47 +346,6 @@ The cover letter is generated using a customizable `cover-letter` function that 
   ),
 )
 ```
-
-## 📝 Example Resume
-<a href="./tests/resume/ref/1.png" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./tests/resume/ref/1.png">
-    <img alt="Example Resume" src="./tests/resume/ref/1.png">
-  </picture>
-</a>
-
-## 📓 Example CV
-
-<div align="center">
-<table>
-  <tr>
-    <td>
-      <a href="./tests/cv/ref/1.png" target="_blank">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="./tests/cv/ref/1.png">
-          <img alt="Example CV-1" src="./tests/cv/ref/1.png">
-        </picture>
-      </a>
-    </td>
-    <td>
-      <a href="./tests/cv/ref/2.png" target="_blank">
-        <picture>
-          <source media="(prefers-color-scheme: dark)" srcset="./tests/cv/ref/2.png">
-          <img alt="Example CV-2" src="./tests/cv/ref/2.png">
-        </picture>
-      </a>
-    </td>
-  </tr>
-</table>
-</div>
-
-## Example Cover Letter
-<a href="./tests/cover-letter/ref/1.png" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="./tests/cover-letter/ref/1.png">
-    <img alt="Example Cover Letter" src="./tests/cover-letter/ref/1.png">
-  </picture>
-</a>
 
 ## 👨🏻‍💻 Development & Contribution
 **TODO**
