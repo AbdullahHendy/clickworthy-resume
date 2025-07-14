@@ -11,10 +11,10 @@ NAME := $(shell sed -nE 's/^name\s*=\s*"(.*)"/\1/p' typst.toml)
 VERSION := $(shell sed -nE 's/^version\s*=\s*"(.*)"/\1/p' typst.toml)
 TARGET := $(HOME)/.local/share/typst/packages/local/$(NAME)/$(VERSION)
 
-.PHONY: all help install uninstall lint test update-test 
+.PHONY: all help install uninstall lint test update-test thumbnail
 
 # Default target
-all: lint test install
+all: lint test install thumbnail
 
 # Show available commands
 help:
@@ -27,6 +27,7 @@ help:
 	@echo "  make lint           Run typst-package-check on the package to lint"
 	@echo "  make test           Run tests using tt (tytanic)"
 	@echo "  make update-test    Update tests references, ref/, using tt (tytanic)"
+	@echo "  make thumbnail      Generate the thumbnail image for the package"
 	@echo "  make help           Show this help message"
 	@echo ""
 
@@ -67,3 +68,9 @@ update-test:
 	@echo "🔄 Updating tests with tytanic..."
 	@tt update -v
 	@echo "\033[0;32m✅ Tests updated!\033[0m"
+
+# Generate thumbnail image
+thumbnail:
+	@echo "📸 Generating thumbnail image from template/resume.typ..."
+	@typst compile -f png --pages 1 --ppi 250 template/resume.typ thumbnail.png
+	@echo "\033[0;32m✅ Thumbnail generated: thumbnail.png\033[0m"
