@@ -10,19 +10,28 @@ This **Typst** Resume template allows for writing resumes, CVs, and cover letter
 
 For advice on writing an effective resume, this [small write-up](https://github.com/typst/packages/blob/main/packages/preview/guided-resume-starter-cgc/2.0.0/template/starter.typ) by the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template author is quite helpful.
 
-For advice on writing an effective cover letter, this [guide](https://career.engin.umich.edu/sample-cover-letter/) by [UMich ECRC](https://career.engin.umich.edu/) is quite helpful.
+For advice on writing an effective cover letter, this [guide](https://career.engin.umich.edu/sample-cover-letter/) by [**UMich ECRC**](https://career.engin.umich.edu/) is quite helpful.
+
+> **NOTE**: See the [**official package repository**](https://github.com/typst/packages/tree/main/packages/preview/clickworthy-resume) on the [**Typst Universe**](https://typst.app/universe/)
+
+> **NOTE**: This repository ***is not*** an exact mirror of the [**Typst Universe package**](https://github.com/typst/packages/tree/main/packages/preview/clickworthy-resume) since this a development repository. 
+
 
 ## 🏃 Getting Started
 ### [**Typst Web App**](https://typst.app/)
-> **NOTE**: Instructions will be added on how to use the template with the **Typst Web App** once the package is available on the [**Typst Universe**](https://typst.app/universe/search/?kind=packages)
+1. Open the [Typst App](https://typst.app/) on any supported platform
+2. In the *Dashboard*, select *Start from template*
+3. Search for ***clickworthy-resume*** and select it
+4. Name the project and *Create*
+5. The default editor will show the `resume.typ` template. To work with the `cv.typ` and `cover-letter.typ` templates, click the *Explore files* from the top left of the view.
+6. Edit the desired template and export it to download your version. 
+
 
 ### **Local**
 1. [Install Typst](https://github.com/typst/typst?tab=readme-ov-file#installation)
-2. [Clone this repository](https://github.com/AbdullahHendy/clickworthy-resume)
-3. Run `make install` to install the package locally.
-4. Create a workspace in the location of choice and run `typst init @local/clickworthy-resume:1.0.0` to create a template. 
-5. Edit the desired template and run `typst compile <template>.typ` **to generate a pdf** version or see the [**Typst** guide](https://github.com/typst/typst?tab=readme-ov-file#usage) for more options. 
-> **NOTE**: Steps 2 and 3 will not be necessary once the package is on the [**Typst Universe**](https://typst.app/universe/search/?kind=packages)
+2. Create a workspace in the location of choice and run `typst init @preview/clickworthy-resume` to create a template. 
+3. Edit the desired template, including `resume`, `cv`, or `cover-letter` and run `typst compile <template>.typ` **to generate a pdf** version or see the [**Typst** guide](https://github.com/typst/typst?tab=readme-ov-file#usage) for more options. 
+
 
 ## 📝 Example Resume
 <a href="./tests/resume/ref/1.png" target="_blank">
@@ -348,8 +357,58 @@ The cover letter is generated using a customizable `cover-letter` function that 
 ```
 
 ## 👨🏻‍💻 Development & Contribution
-**TODO**
+### Prerequisites
+- Typst CLI: [Typst](https://github.com/typst/typst?tab=readme-ov-file#installation)
+- Linting: [package-check](https://github.com/typst/package-check)
+- Testing: [tytanic](https://github.com/typst-community/tytanic)
+
+### Project Structure
+- `src/` contains the source code of the library. `src/lib.typ` is a wrapper import for other `*.typ` sources for the ease of importing.
+- `template/` contains the templates/examples of using **clickworthy-resume**. It is what the user of **clickworthy-resume** template is expected to see when running `typst init @preview/clickworthy-resume` and therefore it imports `#import "@preview/clickworthy-resume:1.0.0": *`
+- `tests/` contains the tests for **each** template in `templates/`. Each test has a `ref/` that contains a reference `png` output. Each test has a `test.typ`, which is a mirror of the templates in `template/` except that they import `#import "../../src/lib.typ": *` locally. See the [**tytanic book**](https://typst-community.github.io/tytanic/index.html) for more info.
+- `typst.toml` contains the project's manifest.
+- `thumbnail.png` contains the projects' thumbnail on the [**Typst Universe**](https://typst.app/universe/).
+- `Makefile` contains useful targets for local development.
+  ```bash
+  ❓ Available Makefile commands:
+
+    make                Lint, update tests, test, install, and update thumbnail (default)    
+    make install        Install the package locally to Typst's data directory
+    make uninstall      Remove the installed package version
+    make lint           Run typst-package-check on the package to lint
+    make test           Run tests using tt (tytanic)
+    make update-test    Update tests references, ref/, using tt (tytanic)
+    make thumbnail      Generate the thumbnail image for the package
+    make help           Show this help message
+  ```
+
+### What to Change?
+- To change/update the core library logic, `*.typ` files in `src/` should be modified. A new library file `<feature>.typ` should be added to the `lib.typ` wrapper. 
+- Now, these changes ***will not*** be reflected in the templates in `template/` since it imports `#import "@preview/clickworthy-resume:1.0.0": *`
+- Therefore, local testing should be done by either: 
+  1. using `make install` after each change to install the package locally. Then temporarily changing `@preview` to `@local` in the import. 
+  2. importing the `lib.typ` directly using the relative path: `#import "../src/lib.typ": *`
+
+> **NOTE**: The package is installed locally in the *`Typst data directory`* (*~/.local/share* on linux) according to the [Typst local packaging guide](https://github.com/typst/packages?tab=readme-ov-file#local-packages)
+
+> **NOTE**: If the *second* method is used for development and testing, it's still ***highly recommended*** to install the package locally and try it, check the installation directory, and so on, to get a feel of how the package will look to the end user.
+
+### Before Pushing
+- If library source is changed with any extra functionality, functions, etc., ideally, they should be utilized in the templates in `template/`. Also, documentation in the [How to Edit](#️-how-to-edit) section should be updated with the new functions
+- If a new template is created, `<new-template.typ>` ,add a test for it using **tytanic**: `tt new new-template` and copy the template content to the `tests/<new-template>/test.typ` similar to other `test.typ` files.
+- If a template is modified, update its corresponding `test.typ` and run `make update-test` `make test`
+- If the `resume` template is updated, on on top of updating `tests`, update the thumbnail by running `make thumbnail`
+- Lint by running `make lint`
+- Update version in `typst.toml` and anywhere where the older version number is used, for example, README, templates, etc..
+- Check for typos using a tool like [typos](https://github.com/crate-ci/typos)
+- Install the package locally and test it. Install by running `make install` and test by creating a temp directory and running `typst init @local/clickworthy-resume:<version>`
+
+
+
+
+
 
 
 ## 📋 TODO
-**TODO**
+- **Multilingual Support**: Add support for popular international languages
+- **Non-Linux Makefile Support**: Add support for using the `Makefile` on non-linux OS 
