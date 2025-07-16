@@ -1,4 +1,4 @@
-#import "@local/clickworthy-resume:1.0.0": *
+#import "@preview/clickworthy-resume:1.0.0": *
 
 // Personal Information
 #let name = "Jordan Michaels"
