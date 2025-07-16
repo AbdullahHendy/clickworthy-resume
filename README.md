@@ -411,4 +411,5 @@ The cover letter is generated using a customizable `cover-letter` function that 
 
 ## 📋 TODO
 - **Multilingual Support**: Add support for popular international languages
-- **Non-Linux Makefile Support**: Add support for using the `Makefile` on non-linux OS 
+- **Non-Linux Makefile Support**: Add support for using the `Makefile` on non-linux OS
+- **CI Support**: Add CI support
