@@ -328,7 +328,7 @@ The cover letter is generated using a customizable `cover-letter` function that 
 
 ##### Example
 ```typ
-#show: resume.with(
+#show: cover-letter.with(
   author: "Dr. Alex Morgan",
   location: "San Francisco, CA",
   contacts: (
@@ -402,12 +402,6 @@ The cover letter is generated using a customizable `cover-letter` function that 
 - Update version in `typst.toml` and anywhere where the older version number is used, for example, README, templates, etc..
 - Check for typos using a tool like [typos](https://github.com/crate-ci/typos)
 - Install the package locally and test it. Install by running `make install` and test by creating a temp directory and running `typst init @local/clickworthy-resume:<version>`
-
-
-
-
-
-
 
 ## 📋 TODO
 - **Multilingual Support**: Add support for popular international languages
