@@ -14,14 +14,14 @@ TARGET := $(HOME)/.local/share/typst/packages/local/$(NAME)/$(VERSION)
 .PHONY: all help install uninstall lint test update-test thumbnail
 
 # Default target
-all: lint test install thumbnail
+all: lint update-test test install thumbnail
 
 # Show available commands
 help:
 	@echo ""
 	@echo "❓ Available Makefile commands:"
 	@echo ""
-	@echo "  make                Lint, test, and install (default)"
+	@echo "  make                Lint, update tests, test, install, and update thumbnail (default)"
 	@echo "  make install        Install the package locally to Typst's data directory"
 	@echo "  make uninstall      Remove the installed package version"
 	@echo "  make lint           Run typst-package-check on the package to lint"
@@ -41,14 +41,12 @@ install:
 	@cp -r template "$(TARGET)/"
 	@if [ -f LICENSE ]; then cp LICENSE "$(TARGET)/"; fi
 	@if [ -f thumbnail.png ]; then cp thumbnail.png "$(TARGET)/"; fi
-	@echo "✅ Done installing! Import with: #import \"@local/$(NAME):$(VERSION)\": *"
 	@echo "\033[0;32m✅ Done installing! Import with: #import \"@local/$(NAME):$(VERSION)\": *\033[0m"
 
 # Uninstall the package
 uninstall:
 	@echo "🧹 Uninstalling $(NAME)@$(VERSION)..."
 	@rm -rf "$(TARGET)"
-	@echo "✅ Removed: $(TARGET)"
 	@echo "\033[0;32m✅ Removed $(TARGET)\033[0m"
 
 # Lint using typst-package-check
