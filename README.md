@@ -366,6 +366,9 @@ The cover letter is generated using a customizable `cover-letter` function that 
 - `src/` contains the source code of the library. `src/lib.typ` is a wrapper import for other `*.typ` sources for the ease of importing.
 - `template/` contains the templates/examples of using **clickworthy-resume**. It is what the user of **clickworthy-resume** template is expected to see when running `typst init @preview/clickworthy-resume` and therefore it imports `#import "@preview/clickworthy-resume:1.0.0": *`
 - `tests/` contains the tests for **each** template in `templates/`. Each test has a `ref/` that contains a reference `png` output. Each test has a `test.typ`, which is a mirror of the templates in `template/` except that they import `#import "../../src/lib.typ": *` locally. See the [**tytanic book**](https://typst-community.github.io/tytanic/index.html) for more info.
+
+  > **NOTE**: As stated above, all `test.typ` files are mirror of templates in `template/` except the `cover-letter` test since it involves `#let date = datetime.today().display()`, which makes the test undeterminitic on different systems/CI. On the `test.typ` for `cover-letter`, it's changed to a constant date string. See the [**tytanic book write-up**](https://typst-community.github.io/tytanic/guides/ci.html) on this issue and similar test discrepancy issues.
+
 - `typst.toml` contains the project's manifest.
 - `thumbnail.png` contains the projects' thumbnail on the [**Typst Universe**](https://typst.app/universe/).
 - `Makefile` contains useful targets for local development.
