@@ -61,7 +61,7 @@ lint:
 # Test using tytanic
 test:
 	@echo "🧪 Running tests with tytanic..."
-	@tt run -v
+	@tt run -v --no-fail-fast
 	@echo "\033[0;32m✅ Tests passed!\033[0m"
 
 # Update test using tytanic
