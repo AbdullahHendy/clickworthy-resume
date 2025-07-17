@@ -1,0 +1,51 @@
+name: Build-Test CI
+
+on:
+  push:
+    branches: ["**"]  # Trigger on all branches
+  pull_request:
+    branches: ["**"]  # Trigger on all PRs
+
+permissions:
+  contents: read  # Minimally scoped permissions for GITHUB_TOKEN
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies (Typst, Cargo, Tools)
+        run: |
+          sudo snap install typst
+          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+          source $HOME/.cargo/env
+          cargo install --git https://github.com/typst/package-check.git typst-check
+          cargo install --locked tytanic@0.2.2
+
+      - name: Cache Cargo dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-cargo-
+
+      - name: Lint and build project (Install package to local Typst)
+        run: |
+          make lint
+          make install
+
+      - name: Run tests
+        run: |
+          make test
+
+      - name: Clean up (Uninstall package from local Typst)
+        run: |
+          make uninstall
