@@ -22,7 +22,7 @@
 #let addressee-zip = "90210"
 
 // Resume configuration
-#let date = datetime.today().display()
+#let date = "2025-07-16"
 #let font = "New Computer Modern"
 #let fontSize = 11pt
 #let lang = "en"
