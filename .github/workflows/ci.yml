@@ -17,11 +17,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install dependencies (Typst, Cargo, Tools)
+      - name: Install dependencies (Typst, Cargo)
         run: |
           sudo snap install typst
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           source $HOME/.cargo/env
+
+      - name: Install Cargo tools
+        run: |
           cargo install --locked --git https://github.com/typst/package-check.git --rev bb794efed86cb8dc29dd2b60700fc369e847acbb
           cargo install --locked tytanic@0.2.2
 
