@@ -52,3 +52,14 @@ jobs:
       - name: Clean up (Uninstall package from local Typst)
         run: |
           make uninstall
+
+      - name: Upload test artifacts (diffs, output, refs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tytanic-artifacts
+          path: |
+            tests/**/diff/*.png
+            tests/**/out/*.png
+            tests/**/ref/*.png
+          retention-days: 5
