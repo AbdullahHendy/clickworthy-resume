@@ -50,9 +50,12 @@ uninstall:
 	@echo "\033[0;32m✅ Removed $(TARGET)\033[0m"
 
 # Lint using typst-package-check
+# TODO: remove the "|| [ $$? -eq 2 ]" workaround once typst-package-check added a feature to allow --ignore-warnings option
+#       or similar to ignore warnings and only return an non-zero code on actual errors.
+# See: https://github.com/typst/package-check/issues/29
 lint:
 	@echo "🔍 Running typst-package-check... for linting"
-	@typst-package-check check
+	@typst-package-check check || [ $$? -eq 2 ]
 	@echo "\033[0;32m✅ Lint passed!\033[0m"
 
 # Test using tytanic
