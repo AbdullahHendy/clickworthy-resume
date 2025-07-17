@@ -22,7 +22,7 @@ jobs:
           sudo snap install typst
           curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
           source $HOME/.cargo/env
-          cargo install --git https://github.com/typst/package-check.git
+          cargo install --locked --git https://github.com/typst/package-check.git --rev bb794efed86cb8dc29dd2b60700fc369e847acbb
           cargo install --locked tytanic@0.2.2
 
       - name: Cache Cargo dependencies
