@@ -1,12 +1,11 @@
 /*
 Core formatting for the template document type. Establishes general document-wide formatting, and creates the header for the resume.
-
 Inspired by the template from the `guided-resume-starter-cgc` v2.0.0 package:
 https://github.com/typst/packages/blob/2da94b0f21174ae8366834332a6e44fd966de4dd/packages/preview/guided-resume-starter-cgc/2.0.0/template/templates/resume.template.typ
 */
-
 #let resume(
   author: "",
+  role: "",
   location: "",
   contacts: (),
   summary: "",
@@ -22,10 +21,8 @@ https://github.com/typst/packages/blob/2da94b0f21174ae8366834332a6e44fd966de4dd/
   ),
   body,
 ) = {
-
   // Sets document metadata
   set document(author: author, title: author)
-
   // Document-wide formatting, including font and margins
   set text(
     font: font,
@@ -33,43 +30,41 @@ https://github.com/typst/packages/blob/2da94b0f21174ae8366834332a6e44fd966de4dd/
     lang: lang,
     ligatures: false,  // Disable ligatures for better compatibility and readability
   )
-
   set page(
     margin: margin,
   )
-
   show link: set text(
     fill: rgb("#0645AD")
   )
-  
   // Accent Color Styling
   show heading: set text(
     fill: rgb(theme-color),
   )
-
   // Header parameters, including author and contact information.
   show heading: it => [
     #pad(top: -0.3em, bottom: -0.8em, [#smallcaps(it.body)])
     #line(length: 100%, stroke: 1pt)
   ]
-  
   // Author
   align(center)[
     #block(text(weight: 700, 2.5em, [#smallcaps(author)]))
   ]
-
+  // Role
+  if role != "" {
+    align(center)[
+     #text(weight: 600, 1em, fill: theme-color)[#role]
+    ]
+  }
   // Contact Information
   align(center)[
     #[#contacts.join("  |  ")]
   ]
-
   // Location
   if location != "" {
     align(center)[
       #smallcaps[#location]
     ]
   }
-
   // Professional summary
   if summary != "" {
     pad(
@@ -79,12 +74,10 @@ https://github.com/typst/packages/blob/2da94b0f21174ae8366834332a6e44fd966de4dd/
       ]
     )
   }
-
   // Main body.
   set par(
     justify: true,
   )
-
   body
 }
 
