@@ -1,7 +1,8 @@
-#import "@preview/clickworthy-resume:1.0.1": *
+#import "@preview/clickworthy-resume:1.1.0": *
 
 // Personal Information
 #let name = "Jordan Michaels"
+#let role = ""
 #let email = "jordan.michaels@example.com"
 #let github = "github.com/jordan-devhub"
 #let linkedin = "linkedin.com/in/jordan-michaels"
@@ -30,6 +31,7 @@
 // Resume Header and configuration
 #show: resume.with(
   author: name,
+  role: role,
   location: location,
   contacts: contacts,
   summary: summary,

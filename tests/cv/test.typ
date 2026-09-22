@@ -2,6 +2,7 @@
 
 // Personal Information
 #let name = "Dr. Alex Morgan"
+#let role = ""
 #let email = "alex.morgan@example.com"
 #let github = "github.com/alexm-dev"
 #let linkedin = "linkedin.com/in/alex-morgan"
@@ -29,6 +30,7 @@
 
 #show: resume.with(
   author: name,
+  role: role,
   location: location,
   contacts: contacts,
   summary: summary,
