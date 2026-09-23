@@ -11,7 +11,10 @@ repository = "https://github.com/AbdullahHendy/clickworthy-resume"
 keywords = ["cv", "curriculum vitae", "resume", "cover letter"]
 categories = ["cv"]
 exclude = [
+	".git",
 	".github",
+	".vscode",
+	"Makefile",
 	"tests",
 ]
 

@@ -2,7 +2,7 @@
 
 // Personal Information
 #let name = "Dr. Alex Morgan"
-#let role = ""
+#let role = "Senior Systems Engineer"
 #let email = "alex.morgan@example.com"
 #let github = "github.com/alexm-dev"
 #let linkedin = "linkedin.com/in/alex-morgan"

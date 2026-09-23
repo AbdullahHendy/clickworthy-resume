@@ -6,15 +6,15 @@
 </div>
 
 ## 🙋‍♂️ Introduction
-This **Typst** Resume template allows for writing resumes, CVs, and cover letters fast. The core is borrowed from the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template with extra features, more flexibility, and formatting improvements.
+This **Typst** Resume template allows for writing resumes, CVs, and cover letters fast. The core is borrowed from the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/7b4595c53d4b3d1c6af86f38b6e6bb20dbb865ad/packages/preview/guided-resume-starter-cgc/2.0.0) template with extra features, more flexibility, and formatting improvements.
 
-For advice on writing an effective resume, this [small write-up](https://github.com/typst/packages/blob/main/packages/preview/guided-resume-starter-cgc/2.0.0/template/starter.typ) by the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template author is quite helpful.
+For advice on writing an effective resume, this [small write-up](https://github.com/typst/packages/blob/7b4595c53d4b3d1c6af86f38b6e6bb20dbb865ad/packages/preview/guided-resume-starter-cgc/2.0.0/template/starter.typ) by the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/7b4595c53d4b3d1c6af86f38b6e6bb20dbb865ad/packages/preview/guided-resume-starter-cgc/2.0.0) template author is quite helpful.
 
 For advice on writing an effective cover letter, this [guide](https://career.engin.umich.edu/sample-cover-letter/) by [**UMich ECRC**](https://career.engin.umich.edu/) is quite helpful.
 
 > **NOTE**: See the [**official package repository**](https://github.com/typst/packages/tree/main/packages/preview/clickworthy-resume) on the [**Typst Universe**](https://typst.app/universe/)
 
-> **NOTE**: This repository ***is not*** an exact mirror of the [**Typst Universe package**](https://github.com/typst/packages/tree/main/packages/preview/clickworthy-resume) since this a development repository. 
+> **NOTE**: This repository ***is not*** an exact mirror of the [**Typst Universe package**](https://github.com/typst/packages/tree/main/packages/preview/clickworthy-resume) since this is a development repository. 
 
 
 ## 🏃 Getting Started
@@ -184,7 +184,7 @@ The `exp` function formats a professional experience entry, showing the role tit
 
 #### Publication Entry
 The `pub` function formats a publication citation entry using a simple yet common style. It supports highlighting a specific author, linking the title via DOI, and adding extra notes. Use the `hide` flag to skip rendering.
-> **NOTE**: the style used for publication references appears to be the most widely used format. For more standarized/advanced citation styles see [the Publication List section]() 
+> **NOTE**: the style used for publication references appears to be the most widely used format. For more standarized/advanced citation styles see [the Publication List section](./template/assets/publications.bib) 
 
 ##### Parameters
 - `authors`: A list of author names
