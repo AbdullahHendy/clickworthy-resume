@@ -17,28 +17,26 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6
 
-      - name: Install dependencies (Typst, Cargo)
-        run: |
-          sudo snap install typst
-          curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-          source $HOME/.cargo/env
+      - name: Setup Typst
+        uses: typst-community/setup-typst@v5
+        with:
+          typst-version: ^0.15.1
 
-      - name: Install Cargo tools
-        run: |
-          cargo install --locked --git https://github.com/typst/package-check.git --tag v0.7.0
-          cargo install --locked tytanic@0.4.1
-
-      - name: Cache Cargo dependencies
+      - name: Cache Cargo tools
+        id: cargo-cache
         uses: actions/cache@v5
         with:
           path: |
             ~/.cargo/bin
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-cargo-
+            ~/.cargo/registry/index
+            ~/.cargo/registry/cache
+          key: ${{ runner.os }}-cargo-tytanic-0.4.1-typst-package-check-0.7.0
+
+      - name: Install Cargo tools
+        if: steps.cargo-cache.outputs.cache-hit != 'true'
+        run: |
+          cargo install --locked --git https://github.com/typst/package-check.git --tag v0.7.0
+          cargo install --locked tytanic@0.4.1
 
       - name: Lint and build project (Install package to local Typst)
         run: |
