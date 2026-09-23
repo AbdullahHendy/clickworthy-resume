@@ -6,15 +6,15 @@
 </div>
 
 ## 🙋‍♂️ Introduction
-This **Typst** Resume template allows for writing resumes, CVs, and cover letters fast. The core is borrowed from the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template with extra features, more flexibility, and formatting improvements.
+This **Typst** Resume template allows for writing resumes, CVs, and cover letters fast. The core is borrowed from the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/7b4595c53d4b3d1c6af86f38b6e6bb20dbb865ad/packages/preview/guided-resume-starter-cgc/2.0.0) template with extra features, more flexibility, and formatting improvements.
 
-For advice on writing an effective resume, this [small write-up](https://github.com/typst/packages/blob/main/packages/preview/guided-resume-starter-cgc/2.0.0/template/starter.typ) by the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/main/packages/preview/guided-resume-starter-cgc/2.0.0) template author is quite helpful.
+For advice on writing an effective resume, this [small write-up](https://github.com/typst/packages/blob/7b4595c53d4b3d1c6af86f38b6e6bb20dbb865ad/packages/preview/guided-resume-starter-cgc/2.0.0/template/starter.typ) by the [**guided-resume-starter-cgc**](https://github.com/typst/packages/tree/7b4595c53d4b3d1c6af86f38b6e6bb20dbb865ad/packages/preview/guided-resume-starter-cgc/2.0.0) template author is quite helpful.
 
 For advice on writing an effective cover letter, this [guide](https://career.engin.umich.edu/sample-cover-letter/) by [**UMich ECRC**](https://career.engin.umich.edu/) is quite helpful.
 
 > **NOTE**: See the [**official package repository**](https://github.com/typst/packages/tree/main/packages/preview/clickworthy-resume) on the [**Typst Universe**](https://typst.app/universe/)
 
-> **NOTE**: This repository ***is not*** an exact mirror of the [**Typst Universe package**](https://github.com/typst/packages/tree/main/packages/preview/clickworthy-resume) since this a development repository. 
+> **NOTE**: This repository ***is not*** an exact mirror of the [**Typst Universe package**](https://github.com/typst/packages/tree/main/packages/preview/clickworthy-resume) since this is a development repository. 
 
 
 ## 🏃 Getting Started
@@ -87,6 +87,7 @@ The resume is generated using a customizable `resume` function that accepts vari
 
 ##### Parameters
 - `author`: Your full name
+- `role`: Target role or title
 - `location`: City, state/province, and country
 - `contacts`: A list of links or contact info
 - `summary`: A short professional summary
@@ -100,6 +101,7 @@ The resume is generated using a customizable `resume` function that accepts vari
 ```typ
 #show: resume.with(
   author: "Dr. Alex Morgan",
+  role: "Senior Systems Engineer",
   location: "San Francisco, CA",
   contacts: (
   [#link("mailto:alex.morgan@example.com")[#"alex.morgan@example.com"]],
@@ -182,7 +184,7 @@ The `exp` function formats a professional experience entry, showing the role tit
 
 #### Publication Entry
 The `pub` function formats a publication citation entry using a simple yet common style. It supports highlighting a specific author, linking the title via DOI, and adding extra notes. Use the `hide` flag to skip rendering.
-> **NOTE**: the style used for publication references appears to be the most widely used format. For more standarized/advanced citation styles see [the Publication List section]() 
+> **NOTE**: the style used for publication references appears to be the most widely used format. For more standarized/advanced citation styles see [the Publication List section](./template/assets/publications.bib) 
 
 ##### Parameters
 - `authors`: A list of author names
@@ -364,7 +366,7 @@ The cover letter is generated using a customizable `cover-letter` function that 
 
 ### Project Structure
 - `src/` contains the source code of the library. `src/lib.typ` is a wrapper import for other `*.typ` sources for the ease of importing.
-- `template/` contains the templates/examples of using **clickworthy-resume**. It is what the user of **clickworthy-resume** template is expected to see when running `typst init @preview/clickworthy-resume` and therefore it imports `#import "@preview/clickworthy-resume:1.0.1": *`
+- `template/` contains the templates/examples of using **clickworthy-resume**. It is what the user of **clickworthy-resume** template is expected to see when running `typst init @preview/clickworthy-resume` and therefore it imports `#import "@preview/clickworthy-resume:1.1.0": *`
 - `tests/` contains the tests for **each** template in `templates/`. Each test has a `ref/` that contains a reference `png` output. Each test has a `test.typ`, which is a mirror of the templates in `template/` except that they import `#import "../../src/lib.typ": *` locally. See the [**tytanic book**](https://typst-community.github.io/tytanic/index.html) for more info.
 
   > **NOTE**: As stated above, all `test.typ` files are mirror of templates in `template/` except the `cover-letter` test since it involves `#let date = datetime.today().display()`, which makes the test undeterminitic on different systems/CI. On the `test.typ` for `cover-letter`, it's changed to a constant date string. See the [**tytanic book write-up**](https://typst-community.github.io/tytanic/guides/ci.html) on this issue and similar test discrepancy issues.
@@ -387,7 +389,7 @@ The cover letter is generated using a customizable `cover-letter` function that 
 
 ### What to Change?
 - To change/update the core library logic, `*.typ` files in `src/` should be modified. A new library file `<feature>.typ` should be added to the `lib.typ` wrapper. 
-- Now, these changes ***will not*** be reflected in the templates in `template/` since it imports `#import "@preview/clickworthy-resume:1.0.1": *`
+- Now, these changes ***will not*** be reflected in the templates in `template/` since it imports `#import "@preview/clickworthy-resume:1.1.0": *`
 - Therefore, local testing should be done by either: 
   1. using `make install` after each change to install the package locally. Then temporarily changing `@preview` to `@local` in the import. 
   2. importing the `lib.typ` directly using the relative path: `#import "../src/lib.typ": *`
