@@ -7,6 +7,7 @@ https://github.com/typst/packages/blob/2da94b0f21174ae8366834332a6e44fd966de4dd/
 
 #let resume(
   author: "",
+  role: "",
   location: "",
   contacts: (),
   summary: "",
@@ -57,6 +58,13 @@ https://github.com/typst/packages/blob/2da94b0f21174ae8366834332a6e44fd966de4dd/
   align(center)[
     #block(text(weight: 700, 2.5em, [#smallcaps(author)]))
   ]
+
+  // Role
+  if role != "" {
+    align(center)[
+      #text(weight: 600, 1em, fill: theme-color)[#role]
+    ]
+  }
 
   // Contact Information
   align(center)[
